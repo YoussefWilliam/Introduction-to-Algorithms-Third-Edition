@@ -33,7 +33,6 @@ class Hashtable {
       }
     }
     return arrayOfKeys;
-    console.log(this.data);
   }
 }
 const myHashTable = new Hashtable(50);
