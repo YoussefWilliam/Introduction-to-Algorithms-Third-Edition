@@ -18,13 +18,20 @@ class LinkedList {
     this.tail = newItem;
     this.length = this.length + 1;
   }
+  prepend(value) {
+    const newNode = {
+      value: value,
+      next: null,
+    };
+    newNode.next = this.head;
+    this.head = newNode;
+    this.length = this.length + 1;
+  }
 }
 
 const myLinkedList = new LinkedList(10);
 myLinkedList.append(5);
 myLinkedList.append(16);
+myLinkedList.prepend(7);
 
-console.log(
-  "🚀 ~ file: linkedlists.js ~ line 15 ~ myLinkedList",
-  JSON.stringify(myLinkedList)
-);
+console.log("🚀 ~ file: linkedlists.js ~ line 15 ~ myLinkedList", myLinkedList);
