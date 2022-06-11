@@ -17,7 +17,16 @@ function dynamicFibonacci() {
   };
 }
 
+function bottomUpFibonacci(number) {
+  let answer = [0, 1];
+  for (let i = 2; i <= number; i++) {
+    answer.push(answer[i - 2] + answer[i - 1]);
+  }
+  return answer.pop();
+}
+
 const dynamicFib = dynamicFibonacci();
 
-console.log(normalFibonacci(10));
-console.log(dynamicFib(10));
+console.log(normalFibonacci(20));
+console.log(dynamicFib(20));
+console.log(bottomUpFibonacci(20));
