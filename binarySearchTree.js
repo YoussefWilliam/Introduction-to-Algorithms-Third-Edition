@@ -3,6 +3,9 @@
  *      4               20
  *   1       6       15      170
  *
+ * Breadth First search => [9,4,20,1,6,15,170]
+ * Depth First search   => [9,4,1,6,20,15,170]
+ *
  */
 
 class Node {
@@ -118,6 +121,41 @@ class BinarySearchTree {
       }
     }
   }
+
+  // return a list of traversing the tree in breadth first search.
+  breadthFirstSearch() {
+    let currentNode = this.root;
+    let result = [];
+    let memeoryQueue = [];
+    memeoryQueue.push(currentNode);
+    while (memeoryQueue.length) {
+      currentNode = memeoryQueue.shift();
+      result.push(currentNode.value);
+      if (currentNode.left) {
+        memeoryQueue.push(currentNode.left);
+      }
+      if (currentNode.right) {
+        memeoryQueue.push(currentNode.right);
+      }
+    }
+    return result;
+  }
+
+  recursiveBreadthFirstSearch(memoryQueue, result) {
+    if (memoryQueue.length === 0) {
+      return result;
+    }
+    let currentNode = memoryQueue.shift();
+    result.push(currentNode.value);
+    if (currentNode.left) {
+      memoryQueue.push(currentNode.left);
+    }
+    if (currentNode.right) {
+      memoryQueue.push(currentNode.right);
+    }
+
+    return this.recursiveBreadthFirstSearch(memoryQueue, result);
+  }
 }
 
 const myTree = new BinarySearchTree();
@@ -129,12 +167,13 @@ myTree.insert(6);
 myTree.insert(15);
 myTree.insert(170);
 
-console.log(JSON.stringify(traverse(myTree.root)));
+// console.log(JSON.stringify(traverse(myTree.root)));
+console.log(myTree.recursiveBreadthFirstSearch([myTree.root], []));
 
-console.log(myTree.lookup(9));
-console.log(myTree.lookup(4));
+// console.log(myTree.lookup(9));
+// console.log(myTree.lookup(4));
 
-myTree.remove(20);
-console.log(myTree.lookup(20));
+// myTree.remove(20);
+// console.log(myTree.lookup(20));
 
-console.log(JSON.stringify(traverse(myTree.root)));
+// console.log(JSON.stringify(traverse(myTree.root)));
