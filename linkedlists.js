@@ -92,4 +92,4 @@ console.log(
 
 const myReversedLinkedList = myLinkedList.reverse();
 console.log(myReversedLinkedList.printList());
-console.log("done with linkedlists");
+console.log("done with linkedlists ");
