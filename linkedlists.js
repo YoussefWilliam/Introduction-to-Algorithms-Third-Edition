@@ -60,6 +60,19 @@ class LinkedList {
     this.length--;
     return this;
   }
+  reverse() {
+    let currentNode = this.head;
+    let prevNode = null;
+    let nextNode = null;
+    while (currentNode !== null) {
+      nextNode = currentNode.next;
+      currentNode.next = prevNode;
+      prevNode = currentNode;
+      currentNode = nextNode;
+    }
+    this.head = prevNode;
+    return this;
+  }
 }
 
 const myLinkedList = new LinkedList(10);
@@ -76,3 +89,6 @@ console.log(
   "🚀 ~ file: linkedlists.js ~ line 15 ~ myLinkedList",
   myLinkedList.printList()
 );
+
+const myReversedLinkedList = myLinkedList.reverse();
+console.log(myReversedLinkedList.printList());
